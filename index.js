@@ -11,7 +11,7 @@ const authRoutes = require('./routes/Auth');
 const uploadRoutes = require('./routes/Upload');
 // setup port
 const app = express();
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3010;
 // cors, body-parser, and file-upload
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
