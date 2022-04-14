@@ -14,7 +14,7 @@ module.exports = {
             await database.addUser(name, phone, email, sid)
             const user = await isExistingUser(sid);
             const uid = user.rows[0].uid;
-            await database.addUserImage(uid, image, imageWithMask, vaccineDocument);
+            await database.addUserImage(uid, image, imageWithMask, vaccineDocument,imageDescriptor, imageWithMaskDescriptor);
         }
     }
 }
