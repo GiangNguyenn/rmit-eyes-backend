@@ -19,7 +19,10 @@ module.exports = {
     addUserImage: async (uid, image, imageWithMask, vaccineDocument) => {
         await database.query(`INSERT INTO images(uid, image, image_with_mask, vaccine_document) VALUES('${uid}', '${image}', '${imageWithMask}', '${vaccineDocument}')`)
     },
-    login: async (username, password) => await database.query(`SELECT * FROM super_users WHERE super_users.user_name='${username}' AND super_users.password='${password}'`),
+    login: async (username, password) => {
+        const result = await database.query(`SELECT * FROM super_users WHERE user_name='${username}' AND password='${password}'`);
+        return result
+    },
     isExistingAdmin: async (user_id) => await database.query(`SELECT * FROM super_users WHERE user_id='${user_id}'`),
 
 }

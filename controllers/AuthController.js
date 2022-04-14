@@ -2,9 +2,8 @@ const database = require('../models/database')
 const {isExistingUser, login} = require("../models/database");
 module.exports = {
     login: async (req, res) =>  {
-        console.log('start login', req.body)
         const {username, password} = req.body;
-        const user = await database.login(username, password);
+        const user = await database.login(username, password).catch(e => console.log(e));
         if (user.rows.length) return res.json(user.rows[0]);
         return false;
     },
