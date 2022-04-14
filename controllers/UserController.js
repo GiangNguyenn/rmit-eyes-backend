@@ -1,9 +1,11 @@
 const database = require('../models/database')
-const {isExistingAdmin, login} = require("../models/database");
+const {isExistingAdmin, getUsers} = require("../models/database");
 
 module.exports = {
-    get: (req, res) => {
-        res.send('vo gia bao ')
+    getUsers: async (req, res) => {
+        const result = await getUsers()
+        console.log('result ', result)
+        return res.json(result.rows)
     },
     getUser: async (req, res) => {
         const {user_id} = req.query
