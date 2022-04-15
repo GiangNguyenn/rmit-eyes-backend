@@ -8,7 +8,7 @@ module.exports = {
         return false;
     },
     register: async (req, res) => {
-        const {name, email, phone, sid, image, imageWithMask, vaccineDocument} = req.body;
+        const {name, email, phone, sid, image, imageWithMask, vaccineDocument,imageDescriptor, imageWithMaskDescriptor} = req.body;
         const user = await database.isExistingUser(sid);
         if (!user.rows.length) {
             await database.addUser(name, phone, email, sid)
