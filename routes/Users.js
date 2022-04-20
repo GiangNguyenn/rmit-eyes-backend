@@ -8,9 +8,12 @@ router.get('', async (req, res) => {
 
 router.get('/findUser', async (req, res) => {
     await userController.getUser(req, res);
-}
+})
 
-)
+router.put('/user/approve', async (req, res) => {
+    await userController.updateUserStatus(req, res)
+})
+
 
 module.exports = router
 
