@@ -11,14 +11,7 @@ module.exports = {
 
       const validatePassword = await bcrypt.compare(password, user.rows[0].password);
       if (!validatePassword) return res.status(401).json({ error: 'Incorrect password' });
-      //JWT
-      let tokens = jwtTokens(user.rows[0]); //Gets access and refresh tokens
-      res.cookie('refresh_token', tokens.refreshToken, {
-        ...(process.env.COOKIE_DOMAIN && { domain: process.env.COOKIE_DOMAIN }),
-        httpOnly: true,
-        sameSite: 'none',
-        secure: true,
-      });
+      let tokens = jwtTokens(user.rows[0]); 
       console.log('res.json(tokens)', tokens);
       return res.json(tokens);
     } catch (error) {
