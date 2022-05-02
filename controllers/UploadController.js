@@ -1,7 +1,7 @@
-const storage = require('../storage/storage-config')
-const streamifier = require('streamifier')
-const multer = require('multer')
-const fileUpload = multer()
+const storage = require('../storage/storage-config');
+const streamifier = require('streamifier');
+const multer = require('multer');
+const fileUpload = multer();
 
 // module.exports = {
 //     upload:  fileUpload.single('image'), async (req, res) => {
