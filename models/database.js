@@ -37,6 +37,8 @@ module.exports = {
     updateUserData: async (sid, name, phone, email, image) =>
         await database.query(`UPDATE users SET student_name='${name}', phone='${phone}', email='${email}' WHERE sid ='${sid}'`).catch(e => console.log('error: ', e)),
     updateUserImage: async (uid, image, image_with_mask, image_descriptor, imageWithMaskDescriptor, vaccine_document) => await database.query(`UPDATE images SET image='${image}', image_with_mask='${image_with_mask}', vaccine_document='${vaccine_document}', image_descriptor='${image_descriptor}', image_with_mask_descriptor='${imageWithMaskDescriptor}'  WHERE uid ='${uid}'`).catch(e => console.log('error: ', e)),
-
+    getCheckInRecords: async () => {
+        return await database.query(`SELECT * FROM check_in ORDER BY check_in.checkin_time DESC;`)
+    }
 
 }
