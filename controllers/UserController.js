@@ -1,5 +1,5 @@
 const database = require('../models/database')
-const {isExistingAdmin, getUsers, getUsersWithStatus, getUsersNotWithStatus, updateUserStatus} = require("../models/database");
+const {isExistingAdmin, getUsers, getUsersWithStatus, getUsersNotWithStatus, updateUserStatus, checkInUser} = require("../models/database");
 
 module.exports = {
     getUsers: async (req, res) => {
@@ -30,5 +30,12 @@ module.exports = {
             const result = await updateUserStatus(sid, status)
             return res.json(result)
         }
+    },
+    checkIn: async (req, res) => {
+        const {sid, temperature} = req.body;
+        console.log('checked  in ')
+        const checkin_time = new Date().toISOString();
+        const result = await checkInUser(sid, temperature, checkin_time);
+        return res.send('success')
     }
 }
