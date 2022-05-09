@@ -14,6 +14,12 @@ router.put('/user/approve', async (req, res) => {
     await userController.updateUserStatus(req, res)
 })
 
+router.post('/check-in', async (req, res) => {
+    await userController.checkIn(req, res)
+})
+
+router.get('/check-in', async (req, res) => await userController.getCheckInRecords(req, res))
+
 
 module.exports = router
 

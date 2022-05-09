@@ -11,6 +11,5 @@ router.post('/login', async (req, res)=> {
     await authController.login(req, res)
 })
 
-
 module.exports = router
 
