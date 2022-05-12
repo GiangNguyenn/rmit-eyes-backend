@@ -9,6 +9,7 @@ module.exports = {
         return false;
     },
     register: async (req, res) => {
+        console.log('register')
         const {name, email, phone, sid, image, imageWithMask, vaccineDocument,imageDescriptor, imageWithMaskDescriptor} = req.body;
         const user = await database.isExistingUser(sid);
         if (!user.rows.length) {
@@ -16,13 +17,14 @@ module.exports = {
             const user = await isExistingUser(sid);
             const uid = user.rows[0].uid;
             await database.addUserImage(uid, image, imageWithMask, vaccineDocument,imageDescriptor, imageWithMaskDescriptor);
+            res.send("success!")
         }
         else {
             await updateUserData(sid, name, phone, email)
             const user = await isExistingUser(sid);
             const uid = user.rows[0].uid;
-            await database.updateUserImage(uid, image, imageWithMask, imageDescriptor, imageWithMaskDescriptor, vaccine_document);
-
+            await database.updateUserImage(uid, image, imageWithMask, imageDescriptor, imageWithMaskDescriptor, vaccineDocument);
+            res.send("success!")
         }
     }
 }
