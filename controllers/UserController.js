@@ -32,7 +32,7 @@ module.exports = {
   },
   getUser: async (req, res) => {
     const { user_id } = req.query;
-    const user = await isExistingAdmin(user_id);
+    const user = await isExistingAdmin(JSON.parse(user_id).user_id);
     if (user && user.rows.length) {
       console.log(user.rows[0]);
       return res.json(user.rows[0]);
