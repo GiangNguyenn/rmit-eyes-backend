@@ -9,7 +9,7 @@ const parsers = SerialPort.parsers;
 const parser = new parsers.Readline({
   delimiter: "\r\n",
 });
-const arduinoPort = new SerialPort("COM3", {
+const arduinoPort = new SerialPort("COM4", {
   baudRate: 9600,
   dataBits: 8,
   parity: "none",
